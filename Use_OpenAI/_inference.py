@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-from LLM_Prompting_Backbones.OpenAI.inference import OpenAI
+from openai import OpenAI
 from tenacity import (
     retry,
     stop_after_attempt,
