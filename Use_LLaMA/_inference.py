@@ -4,10 +4,6 @@ import polars as pl
 import os
 from unsloth import FastLanguageModel
 
-max_seq_length = 2048
-dtype = None # Autodetection mode
-load_in_4bit = True
-
 streetname_prompt = """
 Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
 
@@ -25,9 +21,9 @@ def running(struct_input:dict, model_path:str) -> str:
     # INFERENCE
     model, tokenizer = FastLanguageModel.from_pretrained(
         model_name = model_path,
-        max_seq_length = max_seq_length,
-        dtype = dtype,
-        load_in_4bit = load_in_4bit,
+        max_seq_length = 2048,
+        dtype = None,
+        load_in_4bit = True,
     )
     FastLanguageModel.for_inference(model)
 

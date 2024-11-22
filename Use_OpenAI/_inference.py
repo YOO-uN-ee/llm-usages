@@ -16,8 +16,6 @@ client = OpenAI(
 )
 
 @retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(6))
-
-# Zero-shot
 def prompt_openai(question: str,
                   openai_model='gpt-4o-mini') -> str:
     """
@@ -38,6 +36,7 @@ def prompt_openai(question: str,
     return str(completion.choices[0].message.content)
 
 # 1-shot
+@retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(6))
 def prompt_openai(question: str,
                   openai_model='gpt-4o-mini') -> str:
     """
