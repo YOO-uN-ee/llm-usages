@@ -3,19 +3,7 @@ import pandas as pd
 import polars as pl
 import os
 from unsloth import FastLanguageModel
-
-streetname_prompt = """
-Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
-
-### Instruction:
-Classify the given streetname into one of the categories. Base it on the streetname etymology.
-
-### Input:
-{} located in {}, {}
-
-### Response:
-{}
-"""
+from trl import SFTTrainer
 
 def running(struct_input:dict, model_path:str) -> str:
     # INFERENCE
